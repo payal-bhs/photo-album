@@ -20,15 +20,6 @@ const App = () => {
                     <Route exact path="/user/album/:id" render={props => <Album id={props.match.params.id} />}></Route>
                 </Switch>
             </Router>
-            {/* <Header /> */}
-            {/* <div className="container">
-                <div className="row">
-                    <h1 className="text-center">
-                        <span>Photos Album</span>
-                    </h1>
-                </div>
-                <User />
-             </div> */}
         </Container>
     )
 };
