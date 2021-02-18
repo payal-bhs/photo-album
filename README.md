@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+# Photo Album
+A react app which uses [JSONPlaceholder’s](https://jsonplaceholder.typicode.com) api to show users, users album, album photos  
+
+### Setup
+
+* Install the required dependencies - `$npm install`
+
+
 ## Available Scripts
 
 In the project directory, you can run:
