@@ -7,7 +7,7 @@ import { Search } from "./Search.component";
 
 export const User = () => {
     const dispatch = useDispatch();
-    const { users, loading, hasErrors } = useSelector(usersSelector);
+    const { filteredUsers, loading, hasErrors } = useSelector(usersSelector);
 
     useEffect(() => {
         dispatch(fetchUsers());
@@ -23,7 +23,7 @@ export const User = () => {
                 {loading && <LoadingSpinner />}
                 {hasErrors && <h3>Error. Try Refreshing.</h3>}
                 <div className="col-md-12 col-xs-12 col-xl-12">
-                    {!loading && users.map((user, i) => (
+                    {!loading && filteredUsers.map((user, i) => (
                         <UserCard user={user} key={i} />
                     ))}
                 </div>

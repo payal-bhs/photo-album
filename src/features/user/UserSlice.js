@@ -8,6 +8,7 @@ export const userSlice = createSlice({
         loading: false,
         hasErrors: false,
         users: [],
+        filteredUsers: [],
         city: "",
     },
     reducers: {
@@ -16,6 +17,7 @@ export const userSlice = createSlice({
         },
         getUsersSuccess: (state, { payload }) => {
             state.users = payload
+            state.filteredUsers = payload
             state.loading = false
             state.hasErrors = false
         },
@@ -26,13 +28,16 @@ export const userSlice = createSlice({
         updateCity: (state, { payload }) => {
             state.city = payload
         },
-        updateUsers: (state, { payload }) => {
-            state.users = payload
+        updateFilteredUsers: (state, { payload }) => {
+            state.filteredUsers = payload
+        },
+        resetUsers: (state) => {
+            state.filteredUsers = state.users
         }
     },
 });
 
-export const { getUsers, getUsersSuccess, getUsersFailure, updateCity, updateUsers } = userSlice.actions;
+export const { getUsers, getUsersSuccess, getUsersFailure, updateCity, updateFilteredUsers, resetUsers } = userSlice.actions;
 
 export const usersSelector = state => state.users;
 
@@ -57,13 +62,14 @@ export const fetchUsers = () => {
 export const filterUsers = searchInfo => dispatch => {
     const { city, users } = searchInfo;
     dispatch(updateCity(city));
-    console.log("filterUsers city => ", city);
-    console.log("filterUsers current users => ", users);
-    // dispatch(updateUsers(response.data));
     const filteredData = users.filter(user => user.address.city.toLowerCase() === city.toLowerCase());
-    console.log("filterUsers  => ", filteredData);
-    dispatch(updateUsers(filteredData));
+    dispatch(updateFilteredUsers(filteredData));
 
+};
+
+export const resetFilter = () => dispatch => {
+    dispatch(updateCity(""));
+    dispatch(resetUsers());
 };
 
 export default userSlice.reducer;
