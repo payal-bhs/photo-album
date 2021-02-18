@@ -1,8 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import albumsReducer from "../features/album/AlbumSlice";
+import userReducer from "../features/user/UserSlice";
+import userAlbumReducer from "../features/userAlbum/UserAlbumSlice";
 
 export default configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
+    reducer: {
+        albums: albumsReducer,
+        users: userReducer,
+        userAlbum: userAlbumReducer,
+    },
 });
